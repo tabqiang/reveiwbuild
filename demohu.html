@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            text-align: center;
+            margin: 0 auto;
+            width: 600px;
+            height: 600px;
+            background-color: #0099cc;
+            position: relative;
+        }
+
+        ul:nth-child(1) {
+            list-style-type: none;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        ul {
+            display: flex;
+        }
+
+        li {
+            text-align: center;
+            background-color: pink;
+            height: 130px;
+            width: 130px;
+            margin: 10px;
+            line-height: 130px;
+
+        }
+        .current{
+            text-align: center;
+            background-color: red;
+            height: 130px;
+            width: 130px;
+            margin: 10px;
+            line-height: 130px;
+        }
+
+        ul:nth-child(2) {
+            list-style-type: none;
+            flex-direction: column;
+            float: right;
+        }
+
+        ul:nth-child(3) {
+            list-style-type: none;
+            flex-direction: row-reverse;
+            position: absolute;
+            bottom: 0;
+        }
+
+        ul:nth-child(4) {
+            list-style: none;
+            flex-direction: column-reverse;
+            position: absolute;
+            left: 0;
+            top: 150px;
+        }
+
+        button {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            margin-left: -20px;
+            margin-top: -20px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <ul>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+    <ul>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <ul>
+        <li>11</li>
+        <li>12</li>
+    </ul>
+    <button id="btn">开始</button>
+</div>
+<script>
+    var lis=document.getElementsByTagName("li")
+    var a = 0;
+    var b = null;
+    var c = 0;
+    var timer = null;
+    btn = document.getElementById("btn");
+    btn.onclick = function () {
+        clearInterval(timer);
+        b = Math.floor((Math.random() * 30 + 12));
+        timer = setInterval(function () {
+            for (i = 0; i < lis.length; i++) {
+                lis[i].className = "";
+            }
+            lis[a].className = "current";
+            a++;
+            if (a == 12) {
+                a = 0
+            }
+            ;
+            c++;
+            if (c > b) {
+                clearInterval(timer);
+                a = 0;
+                c = 0;
+            }
+            ;
+            console.log(b);
+            console.log(c);
+        }, 80)
+    }
+</script>
+</body>
+</html>
